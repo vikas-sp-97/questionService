@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/question")
@@ -19,6 +20,11 @@ public class QuestionController {
         return questionService.getAllQuestions();
     }
 
+    @GetMapping("/getQuestion/{id}")
+    public Optional<Question> getQuestion(@PathVariable Integer id){
+        return questionService.getQuestionById(id);
+    }
+
     @GetMapping("/quizType/{quizType}")
     public List<Question> getQuestionByType(@PathVariable String quizType){
         return questionService.getQuestionByType(quizType);
@@ -28,5 +34,16 @@ public class QuestionController {
     @ResponseBody
     public String add(@RequestBody Question question){
         return questionService.addQuestion(question);
+    }
+
+    @PutMapping("/update/{id}")
+    @ResponseBody
+    public String update(@PathVariable Integer id, @RequestBody Question question){
+        return questionService.updateQuestion(id, question);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id){
+        return questionService.deleteQuestion(id);
     }
 }
