@@ -19,14 +19,19 @@ public class QuestionService {
     }
 
     public String addQuestion(Question question) {
-        Optional<Question> questionFromDb = questionDao.findById(question.getId());
-        if(questionFromDb.isPresent()){
-            return String.format("Question with ID: %s already present", question.getId());
+        Optional<Integer> id = Optional.ofNullable(question.getId());
+        if(id.isPresent()){
+            Optional<Question> questionFromDb = questionDao.findById(question.getId());
+            if(questionFromDb.isPresent()){
+                return String.format("Question with ID: %s already present", question.getId());
+            }
         }
-        else {
-            questionDao.save(question);
-            return "success";
-        }
+
+
+        // Return the id of the saved Item.
+        Question res = questionDao.save(question);
+        return "success";
+
     }
 
     public List<Question> getQuestionByType(String quizType) {
