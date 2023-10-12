@@ -1,8 +1,12 @@
-package com.example.testService.service;
+package com.example.questionService.service;
 
-import com.example.testService.Question;
-import com.example.testService.model.QuestionDao;
+import com.example.questionService.Question;
+import com.example.questionService.model.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +17,7 @@ public class QuestionService {
 
     @Autowired
     QuestionDao questionDao;
+
 
     public List<Question> getAllQuestions() {
         return questionDao.findAll();
@@ -62,5 +67,25 @@ public class QuestionService {
         }else{
             return String.format("Question with id: %s not found in DB",id);
         }
+    }
+
+    public String getContent() {
+        String questionPageContent = "#question.size()";
+        return evaluateExpression(questionPageContent);
+    }
+
+    public String evaluateExpression(String content){
+        Optional<List<Question>> optionalQuestion = Optional.of(questionDao.findAll());
+
+        if(optionalQuestion.stream().findAny().isPresent()){
+            List<Question> question = optionalQuestion.get();
+            ExpressionParser expressionParser = new SpelExpressionParser();
+            StandardEvaluationContext context = new StandardEvaluationContext();
+            context.setVariable("question", question);
+            Expression parsedExpression = expressionParser.parseExpression(content);
+            return parsedExpression.getValue(context, String.class);
+        }
+
+        return  "No questions found";
     }
 }

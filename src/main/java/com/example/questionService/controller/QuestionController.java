@@ -1,7 +1,7 @@
-package com.example.testService.controller;
+package com.example.questionService.controller;
 
-import com.example.testService.Question;
-import com.example.testService.service.QuestionService;
+import com.example.questionService.Question;
+import com.example.questionService.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +14,11 @@ public class QuestionController {
 
     @Autowired
     QuestionService questionService;
+
+    @GetMapping("/")
+    public String questionHome(){
+        return questionService.getContent();
+    }
 
     @GetMapping("/getAll")
     public List<Question> getAll(){

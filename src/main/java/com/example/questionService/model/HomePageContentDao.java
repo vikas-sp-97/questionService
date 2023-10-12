@@ -1,6 +1,6 @@
-package com.example.testService.model;
+package com.example.questionService.model;
 
-import com.example.testService.HomePageContent;
+import com.example.questionService.HomePageContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
