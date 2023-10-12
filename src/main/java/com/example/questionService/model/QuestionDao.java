@@ -1,6 +1,6 @@
-package com.example.testService.model;
+package com.example.questionService.model;
 
-import com.example.testService.Question;
+import com.example.questionService.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

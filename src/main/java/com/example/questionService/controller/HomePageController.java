@@ -1,7 +1,7 @@
-package com.example.testService.controller;
+package com.example.questionService.controller;
 
-import com.example.testService.HomePageContent;
-import com.example.testService.service.HomePageContentService;
+import com.example.questionService.HomePageContent;
+import com.example.questionService.service.HomePageContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

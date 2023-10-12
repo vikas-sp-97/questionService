@@ -1,4 +1,4 @@
-package com.example.testService;
+package com.example.questionService;
 
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
-package com.example.testService;
+package com.example.questionService;
 
-import com.example.testService.controller.QuestionController;
-import com.example.testService.service.QuestionService;
+import com.example.questionService.controller.QuestionController;
+import com.example.questionService.service.QuestionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.junit.Before;

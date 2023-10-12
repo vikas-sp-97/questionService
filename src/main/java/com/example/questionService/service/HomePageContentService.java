@@ -1,7 +1,7 @@
-package com.example.testService.service;
+package com.example.questionService.service;
 
-import com.example.testService.HomePageContent;
-import com.example.testService.model.HomePageContentDao;
+import com.example.questionService.HomePageContent;
+import com.example.questionService.model.HomePageContentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
